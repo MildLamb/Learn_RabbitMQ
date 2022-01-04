@@ -63,6 +63,11 @@ Jan 04 12:17:35 VM-16-14-centos systemd[1]: Started RabbitMQ broker.
 ### 安装rabbitMQ图形界面
 ```bash
 [root@VM-16-14-centos rabbitmq]# rabbitmq-plugins enable rabbitmq_management
+
+# 需要开启云服务器防火墙和linux防火墙的端口 15672
+[root@VM-16-14-centos rabbitmq]# firewall-cmd --zone=public --add-port=15672/tcp --permanent
+success
+[root@VM-16-14-centos rabbitmq]# systemctl restart firewalld.service
 ```
 
 
