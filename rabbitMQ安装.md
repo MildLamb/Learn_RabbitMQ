@@ -104,3 +104,9 @@ rm -rf /usr/lib64/erlang
 yum list | grep rabbitmq
 yum -y remove rabbitmq-server.noarch
 ```
+
+# Docker安装rabbitMQ
+### 拉取镜像并创建账号密码
+```bash
+[root@VM-16-14-centos rabbitmq]# docker run -di --name myrabbit -e RABBITMQ_DEFAULT_USER=wildwolf -e RABBITMQ_DEFAULT_PASS=W2snowgnar -p 15672:15672 -p 5672:5672 -p 25672:25672 -p 61613:61613 -p 1883:1883 rabbitmq:management
+```
