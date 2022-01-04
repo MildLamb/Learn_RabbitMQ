@@ -52,6 +52,12 @@ Jan 04 12:17:32 VM-16-14-centos rabbitmq-server[30537]: <stdout>
 Jan 04 12:17:32 VM-16-14-centos rabbitmq-server[30537]: Config file(s): (none)
 Jan 04 12:17:35 VM-16-14-centos rabbitmq-server[30537]: Starting broker... completed with 0 plugins.
 Jan 04 12:17:35 VM-16-14-centos systemd[1]: Started RabbitMQ broker.
+
+# 设置rabbitmq开机自启动，看情况设置
+[root@VM-16-14-centos rabbitmq]# systemctl enable rabbitmq-server
+
+# 停止服务
+[root@VM-16-14-centos rabbitmq]# systemctl stop rabbitmq-server
 ```
 
 - 问题1：rpm 安装erlang时提示rpm: Header V4 DSA/SHA1 Signature, key ID 442df0f8: NOKEY  
