@@ -64,11 +64,26 @@ Jan 04 12:17:35 VM-16-14-centos systemd[1]: Started RabbitMQ broker.
 ```bash
 [root@VM-16-14-centos rabbitmq]# rabbitmq-plugins enable rabbitmq_management
 
-# 需要开启云服务器防火墙和linux防火墙的端口 15672
+# 需要开启云服务器防火墙和linux防火墙的端口 15672，默认账号密码 guest,默认账号密码 仅限于localhost
 [root@VM-16-14-centos rabbitmq]# firewall-cmd --zone=public --add-port=15672/tcp --permanent
 success
 [root@VM-16-14-centos rabbitmq]# systemctl restart firewalld.service
+
+# 授权账号密码
+# 新增用户
+[root@VM-16-14-centos rabbitmq]# rabbitmqctl add_user 用户名 密码
+# 设置用户权限
+# administrator：可以登录控制台，查看所有信息，可以对rabbitmq进行管理
+# monitoring：监控者。可以登录控制台，查看所有信息
+# policymaker：策略制定者。登录控制台，指定策略
+# management：普通管理员。登录控制台
+
+# 设置权限
+[root@VM-16-14-centos rabbitmq]# rabbitmqctl set_user_tags 用户名 administrator
+Setting tags for user "mildlamb" to [administrator] ...
 ```
+![image](https://user-images.githubusercontent.com/92672384/148029192-73dd347f-adc0-45eb-9913-0455c1efc144.png)
+
 
 
 - 问题1：rpm 安装erlang时提示rpm: Header V4 DSA/SHA1 Signature, key ID 442df0f8: NOKEY  
