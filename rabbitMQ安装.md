@@ -24,6 +24,34 @@ Eshell V11.1.4  (abort with ^G)
 [root@VM-16-14-centos rabbitmq]# rpm -Uvh rabbitmq-server-3.9.8-1.el7.noarch.rpm
 # 安装rabbitmq
 [root@VM-16-14-centos rabbitmq]# yum install rabbitmq -y
+
+# 启动rabbitmq服务
+[root@VM-16-14-centos rabbitmq]# systemctl start rabbitmq-server
+# 查看rabbitmq状态
+[root@VM-16-14-centos rabbitmq]# systemctl status rabbitmq-server
+● rabbitmq-server.service - RabbitMQ broker
+   Loaded: loaded (/usr/lib/systemd/system/rabbitmq-server.service; disabled; vendor preset: disabled)
+   Active: active (running) since Tue 2022-01-04 12:17:35 CST; 1min 48s ago
+ Main PID: 30537 (beam.smp)
+    Tasks: 24
+   Memory: 62.1M
+   CGroup: /system.slice/rabbitmq-server.service
+           ├─30537 /usr/lib/erlang/erts-11.1.4/bin/beam.smp -W w -MBas ageffcbf -MHas ageffcbf -MBlmbcs 512 -MHlmbcs 512 -MMmcs 30 -P 1048576 -t 5000000 -stbt db -zdbbl 128000 ...
+           ├─30552 erl_child_setup 32768
+           ├─30579 /usr/lib/erlang/erts-11.1.4/bin/epmd -daemon
+           ├─30602 inet_gethost 4
+           └─30603 inet_gethost 4
+
+Jan 04 12:17:32 VM-16-14-centos rabbitmq-server[30537]: Doc guides:  https://rabbitmq.com/documentation.html
+Jan 04 12:17:32 VM-16-14-centos rabbitmq-server[30537]: Support:     https://rabbitmq.com/contact.html
+Jan 04 12:17:32 VM-16-14-centos rabbitmq-server[30537]: Tutorials:   https://rabbitmq.com/getstarted.html
+Jan 04 12:17:32 VM-16-14-centos rabbitmq-server[30537]: Monitoring:  https://rabbitmq.com/monitoring.html
+Jan 04 12:17:32 VM-16-14-centos rabbitmq-server[30537]: Logs: /var/log/rabbitmq/rabbit@VM-16-14-centos.log
+Jan 04 12:17:32 VM-16-14-centos rabbitmq-server[30537]: /var/log/rabbitmq/rabbit@VM-16-14-centos_upgrade.log
+Jan 04 12:17:32 VM-16-14-centos rabbitmq-server[30537]: <stdout>
+Jan 04 12:17:32 VM-16-14-centos rabbitmq-server[30537]: Config file(s): (none)
+Jan 04 12:17:35 VM-16-14-centos rabbitmq-server[30537]: Starting broker... completed with 0 plugins.
+Jan 04 12:17:35 VM-16-14-centos systemd[1]: Started RabbitMQ broker.
 ```
 
 - 问题1：rpm 安装erlang时提示rpm: Header V4 DSA/SHA1 Signature, key ID 442df0f8: NOKEY  
