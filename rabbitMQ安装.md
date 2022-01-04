@@ -60,6 +60,12 @@ Jan 04 12:17:35 VM-16-14-centos systemd[1]: Started RabbitMQ broker.
 [root@VM-16-14-centos rabbitmq]# systemctl stop rabbitmq-server
 ```
 
+### 安装rabbitMQ图形界面
+```bash
+[root@VM-16-14-centos rabbitmq]# rabbitmq-plugins enable rabbitmq_management
+```
+
+
 - 问题1：rpm 安装erlang时提示rpm: Header V4 DSA/SHA1 Signature, key ID 442df0f8: NOKEY  
 解决办法：在rpm 语句后面加上 --force --nodeps就可以了。
 ```bash
