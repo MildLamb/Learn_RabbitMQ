@@ -10,6 +10,6 @@
 - Virtual Host：虚拟地址，用于进行逻辑隔离，最上层的消息路由，一个虚拟主机由若干个Exchange和Queue组成，同一个  
 虚拟主机里面不能有相同名字的Exchange
 - Exchange：交换机，接收消息，根据路由发送消息到绑定的队列(==不具备存储消息的能力==)
-- Bindings：Exchange和Queue之间的虚拟连接，binding中可以保护多个routing key
+- Bindings：Exchange和Queue之间的虚拟连接，binding中可以维护多个routing key
 - Routing key：是一个路由规则，虚拟机可以用它来确定如何路由一个特定消息(简单来说就是条件，让哪些消费者可以得到消息)
 - Queue：队列，也称为Message Queue，消息队列，保存消息并将它们转发给消费者
