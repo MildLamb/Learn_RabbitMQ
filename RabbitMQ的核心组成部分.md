@@ -13,3 +13,6 @@
 - Bindings：Exchange和Queue之间的虚拟连接，binding中可以维护多个routing key
 - Routing key：是一个路由规则，虚拟机可以用它来确定如何路由一个特定消息(简单来说就是条件，让哪些消费者可以得到消息)
 - Queue：队列，也称为Message Queue，消息队列，保存消息并将它们转发给消费者
+
+# RabbitMQ的运行流程
+![image](https://user-images.githubusercontent.com/92672384/148187001-32a2ac80-070a-4d05-b39d-95b8db637fb9.png)
