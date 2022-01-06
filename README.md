@@ -7,3 +7,6 @@
 
 ## 什么是高可靠机制？
 所谓高可靠是指：是指系统可以无故障的持续运行。
+
+## 模式理解
+[https://www.rabbitmq.com/getstarted.html](https://www.rabbitmq.com/getstarted.html)
