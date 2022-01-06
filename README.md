@@ -10,4 +10,4 @@
 
 ## 模式理解
 [https://www.rabbitmq.com/getstarted.html](https://www.rabbitmq.com/getstarted.html)
-- topic模式下 *表示一个 ，#表示0个或多个
+- topic模式下 :*表示1级目录，#表示0-n级目录
