@@ -10,3 +10,4 @@
 
 ## 模式理解
 [https://www.rabbitmq.com/getstarted.html](https://www.rabbitmq.com/getstarted.html)
+- topic模式下 *表示一个 ，#表示0个或多个
