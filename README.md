@@ -19,6 +19,7 @@
 1. 轮询模式的分发：一个消费者一条，按均分配
 2. 公平分发：根据消费者的消费能力进行公平分发，处理快的处理的多，处理慢的处理的少，按劳分配
 
+### 轮询分发
 - 生产者
 ```java
 package com.mildlamb.rabbitmq.work.lunxun;
@@ -183,3 +184,5 @@ public class Consumer1 {
 
 
 ```
+
+### 公平分发
