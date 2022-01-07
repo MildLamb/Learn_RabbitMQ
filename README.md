@@ -11,3 +11,5 @@
 ## 模式理解
 [https://www.rabbitmq.com/getstarted.html](https://www.rabbitmq.com/getstarted.html)
 - topic模式下 :*表示1级目录，#表示0-n级目录
+
+- 代码方式在上方
