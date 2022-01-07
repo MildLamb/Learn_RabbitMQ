@@ -185,7 +185,7 @@ public class Consumer1 {
 
 ```
 
-### 公平分发，一定要是手动应答的方式  authAsk参数为false
+### 公平分发，一定要是手动应答的方式  authAsk参数为false和设置Qos
 - 公平分发在消费者上略有不同
 ```java
 package com.mildlamb.rabbitmq.work.fair;
@@ -220,6 +220,7 @@ public class Consumer1 {
 
             final Channel finalChannel = channel;
 
+            // 定义指标，qos=1，每个消费者一次取多少条消息消费
             finalChannel.basicQos(1);
 
             // 4. 通过通道创建交换机， 声明队列，绑定关系，路由key，发送消息和接收消息
