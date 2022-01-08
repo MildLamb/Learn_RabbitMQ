@@ -1,5 +1,7 @@
 # Learn_RabbitMQ
 学习消息队列
+![image](https://user-images.githubusercontent.com/92672384/148622179-833acf2e-39bc-4587-96fc-d11b4044c019.png)
+
 
 # 消息队列的高可用和高可靠
 ## 什么是高可用机制？
