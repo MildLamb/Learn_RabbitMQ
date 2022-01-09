@@ -1,4 +1,5 @@
 # Springboot整合RabbitMQ
+## 消息生产者
 ### 导入依赖
 ```xml
 <!-- rabbitmq starter依赖 -->
