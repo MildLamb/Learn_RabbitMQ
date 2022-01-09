@@ -1,4 +1,5 @@
 # Springboot整合RabbitMQ
+## fanout模式
 ## 消息生产者
 ### 导入依赖
 ```xml
@@ -103,5 +104,18 @@ class SpringbootRabbitmqOrderProducerApplicationTests {
         orderService.makeOrder("1","1",10);
     }
 
+}
+```
+## 消息消费者
+### 依赖与生产者相同，配置只需改一下端口，消费者的类如下，一其中一个为例
+```java
+@Service
+// 消费者绑定消息队列
+@RabbitListener(queues = {"email_fanout.queue"})
+public class FanoutEmailConsumer {
+    @RabbitHandler  // 消息的落脚点，启动主程序后，会自动执行方法，消费消息
+    public void getMessage(String msg){
+        System.out.println("email fanout --> " + msg);
+    }
 }
 ```
