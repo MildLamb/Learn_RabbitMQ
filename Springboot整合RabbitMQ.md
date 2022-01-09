@@ -119,3 +119,62 @@ public class FanoutEmailConsumer {
     }
 }
 ```
+
+## direct模式
+- 生产者略有不同
+- 配置类
+```java
+@Configuration
+public class RabbitMQ_DirectConfiguration {
+    // 声明注册fanout模式的交换机
+    @Bean
+    public DirectExchange directExchange(){
+        return new DirectExchange("direct_order_exchange",true,false);
+    }
+
+    // 声明队列
+    @Bean
+    public Queue smsQueue_direct(){
+        return new Queue("sms_direct.queue",true);
+    }
+    @Bean
+    public Queue msgQueue_direct(){
+        return new Queue("msg_direct.queue",true);
+    }
+    @Bean
+    public Queue emailQueue_direct(){
+        return new Queue("email_direct.queue",true);
+    }
+
+    // 完成交换机和队列的绑定关系
+    @Bean
+    public Binding smsBinding_direct(){
+        return BindingBuilder.bind(smsQueue_direct()).to(directExchange()).with("sms");
+    }
+    @Bean
+    public Binding msgBinding_direct(){
+        return BindingBuilder.bind(msgQueue_direct()).to(directExchange()).with("msg");
+    }
+    @Bean
+    public Binding emailBinding_direct(){
+        return BindingBuilder.bind(emailQueue_direct()).to(directExchange()).with("email");
+    }
+}
+```
+- 消息提供类
+```java
+    public void makeOrder_direct(String user_id,String product_id,int num){
+        // 根据商品id查询库存是否充足
+        // 保存订单
+        String orderId = UUID.randomUUID().toString();
+        System.out.println("订单生成成功:" + orderId);
+
+        // 通过消息队列完成消息的分发
+        // 参数一：交换机   参数二：routingKey   参数三：消息本体
+        // Work模式  参数一：“”   参数二：队列名   参数三：消息本体
+        String exchangeName = "direct_order_exchange";
+        rabbitTemplate.convertAndSend(exchangeName,"email","订单:" + orderId);
+        rabbitTemplate.convertAndSend(exchangeName,"msg","订单:" + orderId);
+    }
+```
+- 消费者改一下对应的交换机和队列名称即可
