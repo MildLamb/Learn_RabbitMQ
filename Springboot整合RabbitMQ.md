@@ -196,3 +196,25 @@ public class TopicEmailConsumer {
     }
 }
 ```
+- 生产消息的方法
+```java
+    public void makeOrder_topic(String user_id,String product_id,int num){
+        // 根据商品id查询库存是否充足
+        // 保存订单
+        String orderId = UUID.randomUUID().toString();
+        System.out.println("订单生成成功:" + orderId);
+
+        // 通过消息队列完成消息的分发
+        // 参数一：交换机   参数二：routingKey   参数三：消息本体
+        // Work模式  参数一：“”   参数二：队列名   参数三：消息本体
+        String exchangeName = "topic_order_exchange";
+
+        /*
+            email  #.@.#
+            msg    *.msg.#
+            sms    *.com.*
+         */
+        String routeKey = "com.msg.@.qq";
+        rabbitTemplate.convertAndSend(exchangeName,routeKey,"订单:" + orderId);
+    }
+```
