@@ -178,3 +178,21 @@ public class RabbitMQ_DirectConfiguration {
     }
 ```
 - 消费者改一下对应的交换机和队列名称即可
+
+## topic模式
+- 使用注解的方式，创建交换价和队列，以及进行交换机与队列的绑定，其中一个为例
+- 消费者
+```java
+@Service
+@RabbitListener(bindings = @QueueBinding(
+        exchange = @Exchange(value = "topic_order_exchange",type = ExchangeTypes.TOPIC),
+        value = @Queue(value = "email_topic.queue",durable = "true",autoDelete = "false"),
+        key = "#.@.#"
+))
+public class TopicEmailConsumer {
+    @RabbitHandler
+    public void getMessage(String msg){
+        System.out.println("email topic --> " + msg);
+    }
+}
+```
