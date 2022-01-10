@@ -70,3 +70,5 @@ public void makeOrder_ttlMessage(String user_id,String product_id,int num){
         rabbitTemplate.convertAndSend(exchangeName,routeKey,"订单:" + orderId,messagePostProcessor);
     }
 ```
+## 当一个消息同时拥有队列和消息都设置了过期时间的设定，那么以较短时间的设置为准
+## 过期队列和过期消息的区别：过期消息过期了就直接删除，而过期队列中的消息过期后可以选择存放到死信队列中
