@@ -60,7 +60,7 @@ public void makeOrder_ttlMessage(String user_id,String product_id,int num){
         MessagePostProcessor messagePostProcessor = new MessagePostProcessor() {
             @Override
             public Message postProcessMessage(Message message) throws AmqpException {
-                // 设置消息的过期时间
+                // 设置消息的过期时间,10s到期
                 message.getMessageProperties().setExpiration("10000");
                 message.getMessageProperties().setContentEncoding("UTF-8");
                 return message;
