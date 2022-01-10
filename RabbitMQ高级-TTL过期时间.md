@@ -3,7 +3,7 @@
 RabbitMQ可以对消息和队列设置TTL。有两种方法可以设置。  
 
 # 实践
-## 生产者
+## 对队列设置过期时间
 - TTL配置类
 ```java
 @Configuration
@@ -42,5 +42,31 @@ public class RabbitMQ_TTLConfiguration {
         String exchangeName = "ttl_direct_exchange";
         String routeKey = "ttl";
         rabbitTemplate.convertAndSend(exchangeName,routeKey,"订单:" + orderId);
+    }
+```
+
+## 对消息设置过期时间
+- 给消息加上ttl和其他参数限制
+```java
+public void makeOrder_ttlMessage(String user_id,String product_id,int num){
+
+        String orderId = UUID.randomUUID().toString();
+        System.out.println("订单生成成功:" + orderId);
+
+        String exchangeName = "ttl_direct_exchange";
+        String routeKey = "ttlMessage";
+
+        // 给消息设置过期时间
+        MessagePostProcessor messagePostProcessor = new MessagePostProcessor() {
+            @Override
+            public Message postProcessMessage(Message message) throws AmqpException {
+                // 设置消息的过期时间
+                message.getMessageProperties().setExpiration("10000");
+                message.getMessageProperties().setContentEncoding("UTF-8");
+                return message;
+            }
+        };
+
+        rabbitTemplate.convertAndSend(exchangeName,routeKey,"订单:" + orderId,messagePostProcessor);
     }
 ```
