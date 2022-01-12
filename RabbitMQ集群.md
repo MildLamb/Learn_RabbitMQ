@@ -41,5 +41,15 @@ sudo rabbitmqctl cluster_status -n rabbit-1
 # 使用web监控页面
 ### rabbitmq监控页面默认是关闭的,先打开监控页面插件
 ```bash
+[root@VM-16-14-centos usr]# rabbitmq-plugins enable rabbitmq_management
+```
+### 注意在访问的时候：web界面的管理需要给15672和15673设置用户名和密码
+```bash
+rabbitmqctl -n rabbit-1 add_user mildlamb W2kindred
+rabbitmqctl -n rabbit-1 set_user_tags mildlamb administrator
+rabbitmqctl -n rabbit-1 set_permissions -p / mildlamb ".*" ".*" ".*"
 
+rabbitmqctl -n rabbit-2 add_user wildwolf W2snowgnar
+rabbitmqctl -n rabbit-2 set_user_tags wildwolf administrator
+rabbitmqctl -n rabbit-2 set_permissions -p / wildwolf ".*" ".*" ".*"
 ```
