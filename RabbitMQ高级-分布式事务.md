@@ -16,7 +16,7 @@ TCC其实就是采用的补偿机制，其核心思想是：针对每个操作�
 - Cancel阶段主要是在业务执行错误，需要回滚的状态下的业务取消，预留资源释放
 
 # 遇到的问题
-1. 在完成可靠生产时，clean channel shutdown(消息发送成功，ConfirmCallback ack却返回为false)
+## 1.在完成可靠生产时，clean channel shutdown(消息发送成功，ConfirmCallback ack却返回为false)
 ```java
 // 问题原因（代码提示）
 clean channel shutdown; protocol method: #method<channel.close>(reply-code=200, reply-text=OK, class-id=0, method-id=0)
