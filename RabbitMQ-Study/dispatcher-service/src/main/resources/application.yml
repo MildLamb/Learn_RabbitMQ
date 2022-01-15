@@ -1,0 +1,29 @@
+server:
+  port: 9000
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/dispather?useSSL=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: W2kindred
+  rabbitmq:
+    # \u5355\u5E94\u7528rabbitmq
+    # port: 5672
+    # host: 150.158.46.233
+
+    # \u96C6\u7FA4\u7528addresses
+    addresses: 150.158.46.233:5672
+    username: mildlamb
+    password: W2kindred
+    virtual-host: /
+#    listener:
+#      simple:
+#        acknowledge-mode: manual
+#        retry:
+#          enabled: true
+#          max-attempts: 5
+#          initial-interval: 2000ms
+
+
+
