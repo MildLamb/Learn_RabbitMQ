@@ -1,0 +1,25 @@
+server:
+  port: 8089
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/order?useSSL=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: W2kindred
+  rabbitmq:
+    # 单机rabbitmq的链接方式
+    # port: 5672
+    # host: 150.158.46.233
+
+    # 集群rabbitmq的链接方式
+    addresses: 150.158.46.233:5672
+    username: mildlamb
+    password: W2kindred
+    listener:
+      simple:
+        acknowledge-mode: none
+    virtual-host: /
+#    publisher-returns: true
+    publisher-confirm-type: correlated
+
