@@ -1,0 +1,11 @@
+# \u670D\u52A1\u7AEF\u53E3
+server:
+  port: 8081
+
+spring:
+  rabbitmq:
+    username: mildlamb
+    password: W2kindred
+    virtual-host: /
+    host: 150.158.46.233
+    port: 5672
