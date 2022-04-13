@@ -275,3 +275,5 @@ public class Consumer1 {
 
 
 ```
+
+我的rabbitmq地址：http://150.158.46.233:15672/
